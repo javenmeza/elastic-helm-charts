@@ -59,6 +59,9 @@ secrets: []
 # A list of secrets and their paths to mount inside the pod
 secretMounts: []
 
+# A list of secrets and their keys to add to the environment variables
+secretEnvs: []
+
 hostAliases: []
 #- ip: "127.0.0.1"
 #  hostnames:

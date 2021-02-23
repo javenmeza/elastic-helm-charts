@@ -162,6 +162,13 @@ spec:
         env:
           - name: LS_JAVA_OPTS
             value: "{{ .Values.logstashJavaOpts }}"
+          {{- range .Values.secretEnvs }}
+          - name: {{ .name }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ tpl .secretName $ }}
+                key: {{ tpl .key $ }}
+          {{- end }}
 {{- if .Values.extraEnvs }}
 {{ toYaml .Values.extraEnvs | indent 10 }}
 {{- end }}
